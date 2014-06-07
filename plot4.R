@@ -3,6 +3,11 @@
 # for the Dates 01/02/2007 & 02/02/2007
 
 library(sqldf)
+
+fileUrl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+download.file(fileUrl,destfile="household_power_consumption.zip",method="curl")
+unzip("household_power_consumption.zip")
+
 energyData <- read.csv.sql("household_power_consumption.txt",
                                     sql="select * from file where Date in('1/2/2007','2/2/2007') ",
                                     header=TRUE,sep=";",eol="\n")
